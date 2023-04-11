@@ -12,7 +12,6 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-
     public User generateUser(String name, String surname) {
 
         User user = User.builder()

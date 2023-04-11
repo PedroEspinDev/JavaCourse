@@ -4,10 +4,7 @@ import com.example.demo.Entity.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -21,6 +18,7 @@ public class UserController {
     public ResponseEntity<User> create(@RequestBody User user) {
         return ResponseEntity.ok(userService.createUser(user));
     }
+
     @GetMapping("/users")
     public ResponseEntity<List<User>> getUsers() {
         List<User> users = userService.getUsers();
@@ -28,5 +26,15 @@ public class UserController {
             throw new EntityNotFoundException("The list of users is emty ");
         }
         return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<User> findById(@PathVariable Long Id) {
+        return ResponseEntity.ok(userService.findById(Id));
+    }
+    @DeleteMapping("/user/delete/{Id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long Id){
+        userService.deleteById(Id);
+        return ResponseEntity.noContent().build();
     }
 }
