@@ -15,6 +15,7 @@ public class IndexController {
 
     @GetMapping({"/", "", "/index"})
     public String index(Model model) {
+
         model.addAttribute("objeto", service.operacion());
         return "index";
     }

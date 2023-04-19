@@ -3,10 +3,9 @@ package com.ideabag.springboot.di.app.models.service;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-//@Primary
-//@Component("myServiceSimple")
-public class MyService implements IService {
+//@Component("myServiceComplejo")
+public class MyServiceComplejo implements IService {
     public String operacion() {
-        return "Ejecutando algún proceso importante simple...";
+        return "Ejecutando algún proceso importante complicado...";
     }
 }
