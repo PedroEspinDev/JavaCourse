@@ -1,16 +1,32 @@
-package com.ideabag.springboot.di.app.models.domain;
+package com.bolsadeideas.springboot.di.app.models.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-@NoArgsConstructor
-@AllArgsConstructor
-@Setter
-@Getter
 public class ItemFactura {
+	private Producto producto;
+	private Integer cantidad;
 
-    private Producto producto;
+	public ItemFactura(Producto producto, Integer cantidad) {
+		this.producto = producto;
+		this.cantidad = cantidad;
+	}
 
-    private Integer cantidad;
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+	
+	public Integer calcularImporte() {
+		return cantidad * producto.getPrecio();
+	}
+
 }

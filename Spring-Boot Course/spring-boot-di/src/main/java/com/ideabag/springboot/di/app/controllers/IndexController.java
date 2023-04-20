@@ -1,22 +1,26 @@
-package com.ideabag.springboot.di.app.controllers;
+package com.bolsadeideas.springboot.di.app.controllers;
 
-import com.ideabag.springboot.di.app.models.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.annotation.processing.Generated;
+import com.bolsadeideas.springboot.di.app.models.service.IServicio;
 
 @Controller
 public class IndexController {
-    @Autowired
-    private IService service;
+	
+	@Autowired
+	@Qualifier("miServicioComplejo")
+	private IServicio servicio;
 
-    @GetMapping({"/", "", "/index"})
-    public String index(Model model) {
-
-        model.addAttribute("objeto", service.operacion());
-        return "index";
-    }
+	@GetMapping({"/", "", "/index"})
+	public String index(Model model) {
+		
+		model.addAttribute("objeto", servicio.operacion());
+		return "index";
+	}
+	
+	
 }
