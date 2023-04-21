@@ -1,0 +1,11 @@
+D:\Cursos\Repositorio\JavaExercices\Spring-Boot Course\spring-boot-di\src\main\java\com\bolsadeideas\springboot\di\app\SpringBootDiApplication.java
+D:\Cursos\Repositorio\JavaExercices\Spring-Boot Course\spring-boot-di\src\main\java\com\bolsadeideas\springboot\di\app\AppConfig.java
+D:\Cursos\Repositorio\JavaExercices\Spring-Boot Course\spring-boot-di\src\main\java\com\bolsadeideas\springboot\di\app\models\service\MiServicioComplejo.java
+D:\Cursos\Repositorio\JavaExercices\Spring-Boot Course\spring-boot-di\src\main\java\com\bolsadeideas\springboot\di\app\models\domain\Factura.java
+D:\Cursos\Repositorio\JavaExercices\Spring-Boot Course\spring-boot-di\src\main\java\com\bolsadeideas\springboot\di\app\models\service\MiServicio.java
+D:\Cursos\Repositorio\JavaExercices\Spring-Boot Course\spring-boot-di\src\main\java\com\bolsadeideas\springboot\di\app\controllers\FacturaController.java
+D:\Cursos\Repositorio\JavaExercices\Spring-Boot Course\spring-boot-di\src\main\java\com\bolsadeideas\springboot\di\app\models\domain\Cliente.java
+D:\Cursos\Repositorio\JavaExercices\Spring-Boot Course\spring-boot-di\src\main\java\com\bolsadeideas\springboot\di\app\models\domain\ItemFactura.java
+D:\Cursos\Repositorio\JavaExercices\Spring-Boot Course\spring-boot-di\src\main\java\com\bolsadeideas\springboot\di\app\models\domain\Producto.java
+D:\Cursos\Repositorio\JavaExercices\Spring-Boot Course\spring-boot-di\src\main\java\com\bolsadeideas\springboot\di\app\controllers\IndexController.java
+D:\Cursos\Repositorio\JavaExercices\Spring-Boot Course\spring-boot-di\src\main\java\com\bolsadeideas\springboot\di\app\models\service\IServicio.java
