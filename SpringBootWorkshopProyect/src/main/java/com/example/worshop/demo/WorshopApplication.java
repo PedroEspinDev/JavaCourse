@@ -1,12 +1,12 @@
-package com.example.ExSpring;
+package com.example.worshop.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExSpringApplication {
+public class WorshopApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExSpringApplication.class, args);
+		SpringApplication.run(WorshopApplication.class, args);
 	}
 }
