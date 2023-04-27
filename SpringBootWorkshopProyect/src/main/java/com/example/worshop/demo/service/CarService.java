@@ -5,6 +5,9 @@ import com.example.worshop.demo.repository.ICarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class CarService {
@@ -13,5 +16,13 @@ public class CarService {
     public Car createCar(Car car) {
         carRepository.save(car);
         return car;
+    }
+
+    public void deleteCarById(Long id) {
+        carRepository.deleteById(id);
+    }
+
+    public List<Car> getAllCars() {
+        return carRepository.findAll();
     }
 }

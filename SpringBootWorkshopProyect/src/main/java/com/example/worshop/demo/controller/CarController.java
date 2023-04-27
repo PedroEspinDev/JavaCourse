@@ -5,10 +5,9 @@ import com.example.worshop.demo.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -16,8 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class CarController {
     private final CarService carService;
 
-    @PostMapping
-    public ResponseEntity<Car> create(Car car) {
+    @PostMapping("/create")
+    public ResponseEntity<Car> create(@RequestBody Car car) {
         return new ResponseEntity<>(carService.createCar(car), HttpStatus.OK);
+    }
+
+    @GetMapping("/delete/{id}")
+    public ResponseEntity<String> deleteCarById(@PathVariable Long id) {
+        carService.deleteCarById(id);
+        return ResponseEntity.ok("Car with id " + id + " deleted!");
+    }
+
+    @GetMapping("/getCars")
+    public List<Car> getAllCars() {
+        return carService.getAllCars();
     }
 }
