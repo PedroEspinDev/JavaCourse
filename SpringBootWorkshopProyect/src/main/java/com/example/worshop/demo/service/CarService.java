@@ -13,7 +13,7 @@ import java.util.Optional;
 public class CarService {
     private final ICarRepository carRepository;
 
-    public Car createCar(Car car) {
+    public Car saveCar(Car car) {
         carRepository.save(car);
         return car;
     }
@@ -24,5 +24,9 @@ public class CarService {
 
     public List<Car> getAllCars() {
         return carRepository.findAll();
+    }
+
+    public Optional<Car> findById(Long id) {
+        return carRepository.findById(id);
     }
 }
