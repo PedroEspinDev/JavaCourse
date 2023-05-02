@@ -41,7 +41,8 @@ public class CarController {
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateCarById(@PathVariable Long id, @RequestBody Car car) throws Exception {
         Car carTobeUpdated = carService.findById(id).orElseThrow(() -> new Exception("Car with id " + id + " not found"));
-        String carModify = carTobeUpdated.getLicensePlate();
+        carTobeUpdated.setLicensePlate(car.getLicensePlate());
+        Car carModify = carService.saveCar(carTobeUpdated);
         return ResponseEntity.ok("Car with id " + id + " updated!");
     }
 }
