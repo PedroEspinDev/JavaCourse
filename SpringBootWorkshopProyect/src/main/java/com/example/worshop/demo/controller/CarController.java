@@ -42,6 +42,10 @@ public class CarController {
     public ResponseEntity<String> updateCarById(@PathVariable Long id, @RequestBody Car car) throws Exception {
         Car carTobeUpdated = carService.findById(id).orElseThrow(() -> new Exception("Car with id " + id + " not found"));
         carTobeUpdated.setLicensePlate(car.getLicensePlate());
+        carTobeUpdated.setHorsePower(car.getHorsePower());
+        carTobeUpdated.setBrand(car.getBrand());
+        carTobeUpdated.setModel(car.getModel());
+        carTobeUpdated.setMaxSpeed(car.getMaxSpeed());
         Car carModify = carService.saveCar(carTobeUpdated);
         return ResponseEntity.ok("Car with id " + id + " updated!");
     }
