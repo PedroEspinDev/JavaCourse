@@ -1,6 +1,7 @@
 package com.example.worshop.demo.service;
 
 import com.example.worshop.demo.entity.Car;
+import com.example.worshop.demo.entity.exceptions.CarNotFoundException;
 import com.example.worshop.demo.repository.ICarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,11 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    public Optional<Car> findById(Long id) {
-        return carRepository.findById(id);
+    public Car getCarById(Long id) {
+        Optional<Car> optionalCar = carRepository.findById(id);
+        if (!optionalCar.isPresent()) {
+            throw new CarNotFoundException(id);
+        }
+        return optionalCar.get();
     }
 }

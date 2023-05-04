@@ -1,6 +1,7 @@
 package com.example.worshop.demo.controller;
 
 import com.example.worshop.demo.entity.Car;
+import com.example.worshop.demo.entity.exceptions.CarNotFoundException;
 import com.example.worshop.demo.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -8,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RequiredArgsConstructor
 @RestController
@@ -32,15 +33,19 @@ public class CarController {
         return carService.getAllCars();
     }
 
-    @GetMapping("/findById/{id}")
-    public ResponseEntity<Car> findCarById(@PathVariable Long id) throws Exception {
-        Car car = carService.findById(id).orElseThrow(() -> new Exception("Car with id " + id + " not found"));
-        return new ResponseEntity<>(car, HttpStatus.OK);
+    @GetMapping("/getCarById/{id}")
+    public ResponseEntity<Car> getCarById(@PathVariable Long id) throws Exception {
+        try {
+            Car car = carService.getCarById(id);
+            return ResponseEntity.ok(car);
+        } catch (CarNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateCarById(@PathVariable Long id, @RequestBody Car car) throws Exception {
-        Car carTobeUpdated = carService.findById(id).orElseThrow(() -> new Exception("Car with id " + id + " not found"));
+        Car carTobeUpdated = carService.getCarById(id);
         carTobeUpdated.setLicensePlate(car.getLicensePlate());
         carTobeUpdated.setHorsePower(car.getHorsePower());
         carTobeUpdated.setBrand(car.getBrand());
@@ -50,3 +55,5 @@ public class CarController {
         return ResponseEntity.ok("Car with id " + id + " updated!");
     }
 }
+
+
