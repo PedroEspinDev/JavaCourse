@@ -20,8 +20,8 @@ public class CarService {
     public List<Car> getAllCars(){
         return carRepository.findAll();
     }
-    public Car findById(Long id){
+    public Optional<Car> findById(Long id){
         Optional<Car> optionalCar= carRepository.findById(id);
-        return optionalCar.get();
+        return optionalCar;
     }
 }

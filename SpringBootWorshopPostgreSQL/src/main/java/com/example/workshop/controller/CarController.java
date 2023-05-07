@@ -28,8 +28,14 @@ public class CarController {
     }
 
     @GetMapping("/getCarById/{id}")
-    public ResponseEntity<String> getCarById(@PathVariable Long id) {
-        carService.findById(id);
-        return ResponseEntity.ok("This is the car with id:" + id);
+    public ResponseEntity<Car> getCarById(@PathVariable Long id) {
+        Car car = carService.findById(id).orElse(null);
+        if (car != null) {
+            return ResponseEntity.ok(car);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
+    @PutMapping("/update/{id}")
+
 }
