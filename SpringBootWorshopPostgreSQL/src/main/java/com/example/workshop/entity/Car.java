@@ -16,6 +16,7 @@ public class Car {
     private String brand;
     private String model;
     private String licensePlate;
+    private String fuelTipe;
     private int engineDisplacement;
     private int numberDoors;
 }
