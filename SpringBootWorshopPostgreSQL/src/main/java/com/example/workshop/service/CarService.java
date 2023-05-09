@@ -17,11 +17,16 @@ public class CarService {
     public Car saveCar(Car car) {
         return carRepository.save(car);
     }
-    public List<Car> getAllCars(){
+
+    public List<Car> getAllCars() {
         return carRepository.findAll();
     }
-    public Optional<Car> findById(Long id){
-        Optional<Car> optionalCar= carRepository.findById(id);
-        return optionalCar;
+
+    public Car findById(Long id) {
+        return carRepository.findById(id).orElse(null);
+    }
+
+    public void deleteCar(Long id) {
+        carRepository.deleteById(id);
     }
 }

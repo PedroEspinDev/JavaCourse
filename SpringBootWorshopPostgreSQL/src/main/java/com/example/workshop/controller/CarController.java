@@ -23,19 +23,32 @@ public class CarController {
     }
 
     @GetMapping("/getAllCars")
-    public List<Car> getCars(Car car) {
+    public List<Car> getCars() {
         return carService.getAllCars();
     }
 
     @GetMapping("/getCarById/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable Long id) {
-        Car car = carService.findById(id).orElse(null);
-        if (car != null) {
-            return ResponseEntity.ok(car);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+        Car car = carService.findById(id);
+        return new ResponseEntity<>(car, HttpStatus.OK);
     }
-    @PutMapping("/update/{id}")
+
+    @PutMapping("/updateCar/{id}")
+    public ResponseEntity<String> updateCar(@PathVariable Long id, @RequestBody Car car) {
+        Car carTobeUpdated = carService.findById(id);
+        carTobeUpdated.setBrand(car.getBrand());
+        carTobeUpdated.setModel(car.getModel());
+        carTobeUpdated.setLicensePlate(car.getLicensePlate());
+        carTobeUpdated.setEngineDisplacement(car.getEngineDisplacement());
+        carTobeUpdated.setFuelTipe(car.getFuelTipe());
+        carTobeUpdated.setNumberDoors(car.getNumberDoors());
+        carService.saveCar(carTobeUpdated);
+        return ResponseEntity.ok("Car with id " + id + " updated!");
+    }
+    @GetMapping("/deleteCar/{id}")
+    public ResponseEntity<String> deleteCarById(@PathVariable Long id){
+        carService.deleteCar(id);
+        return ResponseEntity.ok("Car with id " + id + " deleted!");
+    }
 
 }
