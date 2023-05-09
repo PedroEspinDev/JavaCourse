@@ -37,5 +37,14 @@ public class CarController {
         }
     }
     @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateCar(@PathVariable Long id, @RequestBody Car car) throws Exception{
+        Car carUpdate= carService.findById(id).orElseThrow();
+        carUpdate.setBrand(car.getBrand());
+        carUpdate.setModel(car.getz());
+        carUpdate.setBrand(car.getBrand());
+        carUpdate.setBrand(car.getBrand());
+        carUpdate.setBrand(car.getBrand());
+        carUpdate.setBrand(car.getBrand());
+    }
 
 }
