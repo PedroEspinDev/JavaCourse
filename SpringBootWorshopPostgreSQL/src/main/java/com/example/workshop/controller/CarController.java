@@ -3,6 +3,7 @@ package com.example.workshop.controller;
 import com.example.workshop.entity.Car;
 import com.example.workshop.service.CarService;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,33 +34,22 @@ public class CarController {
         return new ResponseEntity<>(car, HttpStatus.OK);
     }
 
-    @PutMapping("/updateCar/{id}")
-    public ResponseEntity<String> updateCar(@PathVariable Long id, @RequestBody Car car) {
-        Car carTobeUpdated = carService.findById(id);
-        carTobeUpdated.setBrand(car.getBrand());
-        carTobeUpdated.setModel(car.getModel());
-        carTobeUpdated.setLicensePlate(car.getLicensePlate());
-        carTobeUpdated.setEngineDisplacement(car.getEngineDisplacement());
-        carTobeUpdated.setFuelTipe(car.getFuelTipe());
-        carTobeUpdated.setNumberDoors(car.getNumberDoors());
-        carService.saveCar(carTobeUpdated);
-        return ResponseEntity.ok("Car with id " + id + " updated!");
-    }
     @GetMapping("/deleteCar/{id}")
-    public ResponseEntity<String> deleteCarById(@PathVariable Long id){
+    public ResponseEntity<String> deleteCarById(@PathVariable Long id) {
         carService.deleteCar(id);
         return ResponseEntity.ok("Car with id " + id + " deleted!");
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateCar(@PathVariable Long id, @RequestBody Car car) throws Exception{
-        Car carUpdate= carService.findById(id).orElseThrow();
+    @PutMapping("/updateCar/{id}")
+    public ResponseEntity<Car> updateCar(@PathVariable Long id, @RequestBody Car car) throws Exception {
+        Car carUpdate = carService.findById(id);
         carUpdate.setBrand(car.getBrand());
-        carUpdate.setModel(car.getz());
-        carUpdate.setBrand(car.getBrand());
-        carUpdate.setBrand(car.getBrand());
-        carUpdate.setBrand(car.getBrand());
-        carUpdate.setBrand(car.getBrand());
+        carUpdate.setModel(car.getModel());
+        carUpdate.setLicensePlate(car.getLicensePlate());
+        carUpdate.setEngineDisplacement(car.getEngineDisplacement());
+        carUpdate.setFuelTipe(car.getFuelTipe());
+        carUpdate.setNumberDoors(car.getNumberDoors());
+        carService.saveCar(carUpdate);
+        return new ResponseEntity<>(car,HttpStatus.OK);
     }
-
 }
