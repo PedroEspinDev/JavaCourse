@@ -50,8 +50,7 @@ public class CarController {
         carService.deleteCar(id);
         return ResponseEntity.ok("Car with id " + id + " deleted!");
     }
-<<<<<<< HEAD
-=======
+
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateCar(@PathVariable Long id, @RequestBody Car car) throws Exception{
         Car carUpdate= carService.findById(id).orElseThrow();
@@ -62,6 +61,5 @@ public class CarController {
         carUpdate.setBrand(car.getBrand());
         carUpdate.setBrand(car.getBrand());
     }
->>>>>>> b444cb1425d78988255c620a96409a110486178b
 
 }
