@@ -1,4 +1,4 @@
-package com.example.worshop.demo.entity.exceptions;
+package com.example.worshop.demo.exceptions;
 public class CarException extends RuntimeException {
     public CarException(String message) {
         super("Car not found.");

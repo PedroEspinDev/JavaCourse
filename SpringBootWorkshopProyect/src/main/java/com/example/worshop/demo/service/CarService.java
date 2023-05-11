@@ -1,7 +1,7 @@
 package com.example.worshop.demo.service;
 
 import com.example.worshop.demo.entity.Car;
-import com.example.worshop.demo.entity.exceptions.CarNotFoundException;
+import com.example.worshop.demo.exceptions.CarNotFoundException;
 import com.example.worshop.demo.repository.ICarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
