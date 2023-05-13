@@ -5,9 +5,8 @@ import com.example.workshop.repository.*;
 import lombok.*;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Id;
 import java.util.List;
-import java.util.Optional;
+
 
 @RequiredArgsConstructor
 @Service

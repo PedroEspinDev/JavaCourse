@@ -3,13 +3,11 @@ package com.example.workshop.controller;
 import com.example.workshop.entity.Car;
 import com.example.workshop.service.CarService;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RequiredArgsConstructor
@@ -41,7 +39,7 @@ public class CarController {
     }
 
     @PutMapping("/updateCar/{id}")
-    public ResponseEntity<Car> updateCar(@PathVariable Long id, @RequestBody Car car) throws Exception {
+    public ResponseEntity<Car> updateCar(@PathVariable Long id, @RequestBody Car car) {
         Car carUpdate = carService.findById(id);
         carUpdate.setBrand(car.getBrand());
         carUpdate.setModel(car.getModel());
@@ -50,6 +48,15 @@ public class CarController {
         carUpdate.setFuelTipe(car.getFuelTipe());
         carUpdate.setNumberDoors(car.getNumberDoors());
         carService.saveCar(carUpdate);
-        return new ResponseEntity<>(car,HttpStatus.OK);
+        return new ResponseEntity<>(car, HttpStatus.OK);
+    }
+
+    // IMPLEMENT EXCEPTIONS
+    @ControllerAdvice
+    public static class GlobalExceptionHandler {
+        @ExceptionHandler(CarNotFoundException.class)
+        ResponseEntity<Object> handleException(Exception e ) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 }
