@@ -12,7 +12,7 @@ public class InvalidDataException extends RuntimeException {
     }
 
     public InvalidDataException(String message, BindingResult result) {
-        super(mesage);
+        super(message);
         this.result = result;
     }
     public BindingResult getResult(){
