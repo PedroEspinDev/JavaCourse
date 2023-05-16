@@ -1,13 +1,13 @@
-package com.example.barberShop;
+package com.example.petsApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BarberShopApplication {
+public class PetsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BarberShopApplication.class, args);
+		SpringApplication.run(PetsApplication.class, args);
 	}
 
 }
