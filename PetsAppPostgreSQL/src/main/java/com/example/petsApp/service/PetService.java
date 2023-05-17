@@ -5,6 +5,9 @@ import com.example.petsApp.repository.IPetRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class PetService {
@@ -12,5 +15,20 @@ public class PetService {
 
     public Pet savePet(Pet pet) {
         return petRepository.save(pet);
+    }
+
+    public void deletePetById(Long id) {
+        petRepository.deleteById(id);
+    }
+
+    public List<Pet> getAllPets(Pet pet) {
+        return petRepository.findAll();
+    }
+
+    public Optional<Pet> findPetById(Long id) {
+        return petRepository.findById(id);
+    }
+    public boolean existPetByName(String name) {
+        return petRepository.existByName(name);
     }
 }
