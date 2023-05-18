@@ -18,4 +18,6 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String breed;
+    private int age;
 }

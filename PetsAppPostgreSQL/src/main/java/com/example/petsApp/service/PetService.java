@@ -28,7 +28,11 @@ public class PetService {
     public Optional<Pet> findPetById(Long id) {
         return petRepository.findById(id);
     }
+
     public boolean existPetByName(String name) {
-        return petRepository.existByName(name);
+        return petRepository.findByName(name) != null ? true : false;
+    }
+    public Optional<Pet> findPetByName(String name) {
+        return petRepository.findPetByName(name);
     }
 }

@@ -6,9 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.PushBuilder;
-import java.net.PortUnreachableException;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,9 +42,19 @@ public class PetController {
         }
     }
 
-    @GetMapping("/findPetByName/{name}")
+    @GetMapping("/findByName/{name}")
     public ResponseEntity<Boolean> findByName(@PathVariable String name) {
         boolean petExist = petService.existPetByName(name);
         return ResponseEntity.ok(petExist);
+    }
+    @GetMapping("/findPetByName/{name}")
+    public ResponseEntity<?> findPetByName(@PathVariable String name) {
+        Optional<Pet> petOptional = petService.findPetByName(name);
+        if (petOptional.isPresent()) {
+            Pet pet = petOptional.get();
+            return ResponseEntity.ok(pet);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
