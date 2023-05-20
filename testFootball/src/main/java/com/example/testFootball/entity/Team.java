@@ -28,6 +28,6 @@ public class Team {
     private int division;
     private String competition;
     private int numberOfPlayers;
-    private SimpleDateFormat creationDate;
+    private String creationDate;
 
 }
