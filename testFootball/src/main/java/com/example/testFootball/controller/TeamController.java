@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -16,7 +17,7 @@ public class TeamController {
     private final TeamService teamService;
 
     @PostMapping("/createTeam")
-    public ResponseEntity<Team> createTeam(@RequestBody Team team){
+    public ResponseEntity<Team> createTeam(@Valid @RequestBody Team team){
         return new ResponseEntity<>(teamService.saveTeam(team), HttpStatus.OK);
     }
     @GetMapping("/getAllTeams")
