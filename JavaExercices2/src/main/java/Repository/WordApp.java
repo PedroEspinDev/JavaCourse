@@ -11,19 +11,18 @@ public class WordApp {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a world (casa, mesa, perro, gato): ");
         word = sc.nextLine();
-        word = word.toUpperCase();
 
-        switch (word) {
-            case "Casa":
+        switch (word.toLowerCase()) {
+            case "casa":
                 System.out.println("House");
                 break;
-            case "Mesa":
+            case "mesa":
                 System.out.println("Table");
                 break;
-            case "Perro":
+            case "perro":
                 System.out.println("Dog");
                 break;
-            case "Gato":
+            case "gato":
                 System.out.println("Cat");
                 break;
             default:
