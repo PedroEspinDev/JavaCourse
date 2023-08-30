@@ -3,4 +3,4 @@ My beginnings in java,SQL y APIRest, basic algorithmic projects, java courses, S
 
 Autor: @PedroEspinDev
 
-Language: Inglish
+Language: English
